@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}View Payment{% endblock %}
+
+{% block content %}
+<h2>Payment for Order {{ order_id }}</h2>
+{% if payment %}
+<img src="{{ url_for('uploaded_file', filename=payment.screenshot_path) }}" alt="Payment Screenshot">
+<p>Status: {{ payment.status }}</p>
+<form method="post" action="{{ url_for('verify_payment', order_id=order_id) }}">
+    <button type="submit" name="action" value="accept">Accept Payment</button>
+    <button type="submit" name="action" value="reject">Reject Payment</button>
+</form>
+{% else %}
+<p>No payment uploaded yet.</p>
+{% endif %}
+{% endblock %}

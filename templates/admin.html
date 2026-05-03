@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<h3>Orders</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>User ID</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.user_id }}</td>
+            <td>₹{{ order.total }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.created_at }}</td>
+            <td><a href="{{ url_for('view_payment', order_id=order.id) }}">View Payment</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Products</h3>
+<a href="{{ url_for('add_product') }}">Add Product</a>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>₹{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.category }}</td>
+            <td>
+                <a href="{{ url_for('edit_product', product_id=product.id) }}">Edit</a>
+                <a href="{{ url_for('delete_product', product_id=product.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

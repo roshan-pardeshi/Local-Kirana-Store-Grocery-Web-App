@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<h2>Checkout</h2>
+<h3>Order Summary</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart_items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>₹{{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>₹{{ item.total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p>Total: ₹{{ total }}</p>
+<form method="post">
+    <button type="submit">Place Order</button>
+</form>
+{% endblock %}

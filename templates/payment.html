@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Payment{% endblock %}
+
+{% block content %}
+<h2>Payment</h2>
+<p>Total Amount: ₹{{ order.total }}</p>
+<p>Scan the QR code below to pay using UPI.</p>
+<img src="{{ url_for('static', filename='images/qr_code.png') }}" alt="UPI QR Code">
+<p>UPI ID: kirana@upi</p>
+<form method="post" enctype="multipart/form-data">
+    <label for="screenshot">Upload Payment Screenshot:</label>
+    <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
+    <button type="submit">I Have Paid</button>
+</form>
+{% endblock %}
