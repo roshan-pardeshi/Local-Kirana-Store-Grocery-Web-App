@@ -121,6 +121,6 @@ This project is open-source and available under the **MIT License**.
 **Your Name**
 GitHub: https://github.com/your-username
 
----
 
-⭐ *If you like this project, don’t forget to give it a star!* ⭐
+
+
